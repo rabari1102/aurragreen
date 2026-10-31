@@ -76,7 +76,8 @@ section{padding:110px 0}
 .view.on{opacity:1;visibility:visible;transition:opacity .9s var(--ease)}
 /* tower */
 #towerView svg{width:100%;height:100%;display:block;transition:transform 1.3s var(--ease),filter 1.3s}
-#towerView.leaving svg{transform:scale(1.35);filter:blur(4px)}
+#towerView.leaving svg{transform:scale(2.6);filter:blur(3px)}
+#towerView svg{transition:transform 1.5s cubic-bezier(.55,0,.35,1),filter 1.5s}
 .floorPoly{fill:rgba(255,255,255,0);stroke:rgba(255,255,255,0);stroke-width:3;cursor:pointer;transition:fill .35s,stroke .35s}
 .floorPoly.hot{fill:rgba(255,236,214,.22);stroke:rgba(255,255,255,.85)}
 .floorPoly.special{fill:rgba(255,255,255,0)}
@@ -103,16 +104,32 @@ section{padding:110px 0}
 .hs:hover,.hs.active{background:var(--ink);color:#fff}
 .layerPlan .planWrap img{background:#f2efe9}
 /* live 3D */
-#liveStage{background:#1b1512;cursor:grab}
+#liveStage{background:#1b1512;cursor:grab;touch-action:none}
 #liveStage:active{cursor:grabbing}
 #liveCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.liveVignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 55%,rgba(10,6,4,.42) 100%)}
 .liveLoading{position:absolute;inset:0;display:grid;place-items:center;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#cbb9ad;pointer-events:none;transition:opacity .6s}
-.liveCap{position:absolute;left:40px;bottom:84px;pointer-events:none;opacity:0;transform:translateY(14px);transition:opacity .8s,transform .8s var(--ease);text-shadow:0 2px 24px rgba(0,0,0,.55)}
+.liveFade{position:absolute;inset:0;background:#120d0b;opacity:0;pointer-events:none;transition:opacity 1.6s ease}
+.liveFade.on{opacity:1;transition:none}
+.liveCap{position:absolute;left:36px;bottom:92px;pointer-events:none;opacity:0;transform:translateY(14px);transition:opacity .9s,transform .9s var(--ease);text-shadow:0 2px 26px rgba(0,0,0,.6)}
 .liveCap.on{opacity:1;transform:none}
-.liveCap b{display:block;font-weight:200;font-size:clamp(38px,4.6vw,66px);line-height:1;letter-spacing:-.01em}
+.liveCap b{display:block;font-weight:200;font-size:clamp(38px,4.8vw,70px);line-height:1;letter-spacing:-.01em}
 .liveCap small{display:block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;color:#f1e2d6}
-.liveHint{position:absolute;right:24px;top:22px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#e6d8ce;padding:7px 12px;border-radius:20px;background:rgba(0,0,0,.28);pointer-events:none;transition:opacity .6s}
-@media (max-width:900px){.liveCap{left:16px;bottom:64px}.liveHint{right:12px;top:12px}#liveLabel{display:none}}
+.liveTop{position:absolute;left:24px;top:20px;display:flex;align-items:center;gap:14px}
+.liveTop .planLabel{position:static}
+.liveTop .toggle3d{position:static}
+.liveHint{position:absolute;right:24px;top:70px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#e6d8ce;padding:7px 12px;border-radius:20px;background:rgba(0,0,0,.3);pointer-events:none;transition:opacity .6s}
+.liveBar{position:absolute;left:24px;right:24px;bottom:22px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.liveBar::-webkit-scrollbar{display:none}
+.liveBar button{flex:none;padding:9px 15px;border-radius:30px;font-size:13px;color:#fff;background:rgba(20,14,12,.45);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .25s,color .25s}
+.liveBar button:hover{background:rgba(255,255,255,.2)}
+.liveBar button.on{background:#fff;color:var(--ink)}
+#liveTags{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.tag3d{position:absolute;left:0;top:0;display:flex;align-items:center;gap:7px;padding:6px 12px 6px 7px;border-radius:30px;background:rgba(255,255,255,.9);color:var(--ink);font-size:12.5px;font-weight:400;white-space:nowrap;box-shadow:0 8px 22px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .4s}
+.tag3d i{width:10px;height:10px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 4px rgba(238,125,34,.28);animation:pulse 2s infinite}
+.tag3d.show{opacity:1;pointer-events:auto;cursor:pointer}
+.tag3d:hover{background:var(--ink);color:#fff}
+@media (max-width:900px){.liveCap{left:16px;bottom:72px}.liveHint{display:none}.liveTop{left:12px;top:12px}.liveTop .planLabel{display:none}.liveBar{left:12px;right:12px;bottom:14px}}
 /* panel */
 .panel{position:absolute;z-index:5;right:28px;top:50%;transform:translateY(-50%);width:372px;max-height:calc(100% - 56px);overflow:auto;padding:28px 28px 24px;border-radius:18px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.35)}
 .panel .crumbs{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;color:#e2d5cb;margin-bottom:14px}
@@ -311,11 +328,18 @@ footer .disc{line-height:1.6;opacity:.8}
       <div class="view" id="liveView">
         <div class="planStage" id="liveStage">
           <canvas id="liveCanvas"></canvas>
+          <div id="liveTags"></div>
+          <div class="liveVignette"></div>
           <div class="liveLoading" id="liveLoading">Building the 3D home…</div>
           <div class="liveCap" id="liveCap"><small id="liveCapSub"></small><b id="liveCapTitle"></b></div>
-          <div class="planLabel" id="liveLabel">Live 3D view</div>
+          <div class="liveTop"><span class="planLabel" id="liveLabel">Live 3D</span>
+            <div class="toggle3d" id="liveModes"><button class="on" data-mode="walk">Walk-through</button><button data-mode="doll">Dollhouse</button></div></div>
           <div class="liveHint" id="liveHint">Drag to look around</div>
-          <div class="toggle3d" id="liveModes"><button class="on" data-mode="walk">Walk-through</button><button data-mode="doll">Dollhouse</button></div>
+          <div class="liveBar" id="liveBar">
+            <button data-room="drawing">Hall</button><button data-room="living">Living &amp; dining</button><button data-room="kitchen">Kitchen</button>
+            <button data-room="bed1">Master bedroom</button><button data-room="bed2">Bedroom 2</button><button data-room="bed3">Bedroom 3</button>
+            <button data-room="toilets">Bathroom</button><button data-room="balcony">Balcony</button></div>
+          <div class="liveFade" id="liveFade"></div>
         </div>
       </div>
       <div class="view layerPlan" id="specialView">
@@ -439,7 +463,7 @@ const FLOOR_COPY = {
 };
 // Rooms for Flat A on the typical 3D plan (percent of image). Flat B mirrors on X.
 const ROOMS = [
-  {id:'drawing', name:'Drawing room', size:"12'0\" × 16'6\"", sqft:198, r:[21,62,20,22], p:[31,72],
+  {id:'drawing', name:'Hall (drawing room)', size:"12'0\" × 16'6\"", sqft:198, r:[21,62,20,22], p:[31,72],
    f:['Opens onto the 12\'0" × 5\'0" balcony','A.C. point, modular switches','Premium vitrified tile flooring']},
   {id:'balcony', name:'Balcony', size:"12'0\" × 5'0\"", sqft:60, r:[21,82,20,13], p:[31,90],
    f:['Sit-out off the drawing room','Planter edge facing the 12 m road']},
@@ -595,7 +619,7 @@ function enterLevel(L){
   const tv=$('#towerView'); const svg=$('#towerSvg');
   const g=levelGeom[L]; svg.style.transformOrigin=`${(CORNER_X/2000*100).toFixed(1)}% ${(g.cy/1576*100).toFixed(1)}%`;
   tv.classList.add('leaving');
-  setTimeout(()=>{ if(L===0||L===7) openSpecial(L); else { state.flat=state.nextFlat||pickFlat(L); state.nextFlat=null; openLive('living'); } },380);
+  setTimeout(()=>{ if(L===0||L===7) openSpecial(L); else { state.flat=state.nextFlat||pickFlat(L); state.nextFlat=null; openLive('drawing'); } },L===0||L===7?380:1100);
 }
 function pickFlat(L){return STATUS[unitNo(L,'A')]==='available'?'A':STATUS[unitNo(L,'B')]==='available'?'B':'A'}
 function backToTower(){
@@ -727,7 +751,7 @@ panel.addEventListener('click',e=>{
   const act=b.dataset.act;
   if(b.dataset.go!==undefined){ if(state.view==='tower')setHot(+b.dataset.go); enterLevel(+b.dataset.go); return;}
   if(b.dataset.room){ if(state.view==='flat'||state.view==='room'||state.view==='live') openLive(b.dataset.room); return;}
-  if(act==='live'){openLive('living');return}
+  if(act==='live'){openLive('drawing');return}
   if(act==='plan'){const f=state.flat||'A'; stopLive(); openFloor(state.level); setTimeout(()=>openFlat(f),900); return}
   if(act==='doll'){liveMode('doll');return}
   if(act==='walk'){liveMode('walk');return}
@@ -808,6 +832,7 @@ window.__renderLivePanel=function(id){
   </div>`;
 };
 </script>
-<script src="live3d.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module" src="live3d.js"></script>
 </body>
 </html>
