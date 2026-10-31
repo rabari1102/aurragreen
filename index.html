@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurra Green · 3 BHK Exclusive Living · Vasna, Ahmedabad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2c2522; --ink2:#5d514b; --muted:#8c7f77;
+  --paper:#f3eee7; --paper2:#e9e1d6; --brown:#7b5d48; --taupe:#8c7068;
+  --leaf:#3c9a4a; --sun:#ee7d22;
+  --glass:rgba(28,22,20,.42); --line:rgba(255,255,255,.22);
+  --ease:cubic-bezier(.65,.02,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Jost,system-ui,sans-serif;font-weight:300;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;font-weight:400;color:var(--muted)}
+h2.title{font-weight:200;font-size:clamp(34px,4.6vw,58px);line-height:1.05;letter-spacing:-.01em;margin:14px 0 18px}
+.script{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;transition:background .4s,box-shadow .4s}
+.nav.solid{background:rgba(243,238,231,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.nav .brand{display:flex;align-items:center;gap:10px}
+.nav .brand img{height:38px;transition:filter .4s}
+.nav:not(.solid) .brand img{filter:brightness(0) invert(1)}
+.nav ul{display:flex;gap:26px;list-style:none;font-size:14px;letter-spacing:.04em}
+.nav ul a{text-decoration:none;color:#fff;opacity:.9;transition:color .4s}
+.nav.solid ul a{color:var(--ink)}
+.nav .cta{padding:9px 18px;border:1px solid currentColor;border-radius:40px}
+@media (max-width:860px){.nav ul li:not(:last-child){display:none}}
+
+/* HERO */
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;color:#fff}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 40%;transform:scale(1.08);animation:kb 18s ease-out forwards}
+@keyframes kb{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 50%,rgba(20,12,8,.72) 100%)}
+.hero .copy{position:absolute;z-index:2;left:0;right:0;bottom:9vh}
+.hero h1{font-weight:200;font-size:clamp(46px,8vw,112px);line-height:.95;letter-spacing:-.02em}
+.hero h1 .script{font-size:1.05em;color:#f6d7b4}
+.hero p{max-width:520px;margin:18px 0 28px;font-size:17px;opacity:.92}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:44px;background:#fff;color:var(--ink);font-weight:400;text-decoration:none;letter-spacing:.02em;transition:transform .3s,background .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:inherit;border:1px solid currentColor}
+.btn.dark{background:var(--ink);color:#fff}
+.hero .scroll{position:absolute;z-index:2;right:28px;bottom:9vh;font-size:12px;letter-spacing:.24em;writing-mode:vertical-rl;opacity:.8}
+
+/* FACTS */
+.facts{background:var(--brown);color:#f4ece4}
+.facts .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.fact{padding:34px 18px;border-left:1px solid rgba(255,255,255,.15)}
+.fact:first-child{border-left:0}
+.fact b{display:block;font-weight:200;font-size:44px;line-height:1}
+.fact span{font-size:13px;letter-spacing:.06em;opacity:.85}
+@media (max-width:760px){.facts .wrap{grid-template-columns:repeat(2,1fr)}.fact{border-left:0;border-top:1px solid rgba(255,255,255,.12)}.fact:last-child{grid-column:span 2}}
+
+section{padding:110px 0}
+@media (max-width:760px){section{padding:72px 0}}
+
+/* EXPLORER */
+#explore{padding:0;background:#16110f;color:#fff}
+.explorer{scroll-margin-top:72px}
+.ex-head{padding:90px 0 34px}
+.ex-head .eyebrow{color:#bca99c}
+.ex-head p{max-width:560px;color:#d8cbc2}
+.explorer{position:relative;height:min(calc(100svh - 72px),900px);min-height:600px;overflow:hidden;background:#0f0b0a}
+.view{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .9s var(--ease),visibility 0s .9s}
+.view.on{opacity:1;visibility:visible;transition:opacity .9s var(--ease)}
+/* tower */
+#towerView svg{width:100%;height:100%;display:block;transition:transform 1.3s var(--ease),filter 1.3s}
+#towerView.leaving svg{transform:scale(1.35);filter:blur(4px)}
+.floorPoly{fill:rgba(255,255,255,0);stroke:rgba(255,255,255,0);stroke-width:3;cursor:pointer;transition:fill .35s,stroke .35s}
+.floorPoly.hot{fill:rgba(255,236,214,.22);stroke:rgba(255,255,255,.85)}
+.floorPoly.special{fill:rgba(255,255,255,0)}
+.floorPoly.special.hot{fill:rgba(170,230,180,.18);stroke:rgba(200,255,210,.8)}
+.marker{pointer-events:none;transition:transform .45s var(--ease),opacity .3s}
+.marker text{font-family:Jost;font-weight:300;font-size:46px;fill:#fff}
+.hint{position:absolute;left:28px;bottom:26px;font-size:13px;letter-spacing:.06em;color:#e8dcd2;display:flex;align-items:center;gap:10px;pointer-events:none}
+.hint i{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.6)}100%{box-shadow:0 0 0 14px rgba(255,255,255,0)}}
+/* plan views */
+.planStage{position:absolute;left:0;top:0;bottom:0;right:420px;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#3b302b 0%,#1a1412 75%)}
+.planWrap{position:absolute;transform-origin:0 0;transition:transform 1.25s var(--ease)}
+.planWrap img{width:100%;height:100%;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.planWrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.flatPoly{fill:rgba(255,255,255,0);stroke:rgba(255,255,255,0);stroke-width:.35;cursor:pointer;transition:fill .3s,stroke .3s,opacity .6s}
+.flatPoly:hover,.flatPoly.hot{fill:rgba(255,232,205,.2);stroke:#fff}
+.flatPoly.sold{cursor:pointer}
+.flatPoly.sold:hover{fill:rgba(40,30,28,.35)}
+.flatTag{font-family:Jost;font-size:2.4px;font-weight:400;fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.55);stroke-width:.5px;pointer-events:none;letter-spacing:.05px}
+.dim{fill:rgba(15,11,10,.62);transition:opacity .9s var(--ease);pointer-events:none}
+.hs{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:6px;padding:5px 10px 5px 6px;border-radius:30px;background:rgba(255,255,255,.92);color:var(--ink);font-size:12px;font-weight:400;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .45s,transform .45s;transform-origin:center}
+.hs::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 3px rgba(238,125,34,.25)}
+.hs.show{opacity:1;pointer-events:auto}
+.hs:hover,.hs.active{background:var(--ink);color:#fff}
+.layerPlan .planWrap img{background:#f2efe9}
+/* live 3D */
+#liveStage{background:#1b1512;cursor:grab}
+#liveStage:active{cursor:grabbing}
+#liveCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.liveLoading{position:absolute;inset:0;display:grid;place-items:center;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#cbb9ad;pointer-events:none;transition:opacity .6s}
+.liveCap{position:absolute;left:40px;bottom:84px;pointer-events:none;opacity:0;transform:translateY(14px);transition:opacity .8s,transform .8s var(--ease);text-shadow:0 2px 24px rgba(0,0,0,.55)}
+.liveCap.on{opacity:1;transform:none}
+.liveCap b{display:block;font-weight:200;font-size:clamp(38px,4.6vw,66px);line-height:1;letter-spacing:-.01em}
+.liveCap small{display:block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;color:#f1e2d6}
+.liveHint{position:absolute;right:24px;top:22px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#e6d8ce;padding:7px 12px;border-radius:20px;background:rgba(0,0,0,.28);pointer-events:none;transition:opacity .6s}
+@media (max-width:900px){.liveCap{left:16px;bottom:64px}.liveHint{right:12px;top:12px}#liveLabel{display:none}}
+/* panel */
+.panel{position:absolute;z-index:5;right:28px;top:50%;transform:translateY(-50%);width:372px;max-height:calc(100% - 56px);overflow:auto;padding:28px 28px 24px;border-radius:18px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.panel .crumbs{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;color:#e2d5cb;margin-bottom:14px}
+.panel .crumbs button{text-decoration:underline;text-underline-offset:3px;opacity:.9}
+.panel h3{font-weight:200;font-size:38px;line-height:1.05;margin-bottom:10px}
+.panel p{font-size:14px;color:#efe5dd}
+.lvl{display:flex;align-items:flex-end;gap:14px;margin:18px 0 6px}
+.lvl small{font-size:13px;letter-spacing:.1em;padding-bottom:10px;color:#e0d2c8}
+.lvl b{font-weight:200;font-size:92px;line-height:.85;font-variant-numeric:tabular-nums;transition:opacity .25s}
+.lvl .stepper{margin-left:auto;display:flex;flex-direction:column;gap:6px}
+.lvl .stepper button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:16px}
+.lvl .stepper button:hover{background:rgba(255,255,255,.14)}
+.rule{height:1px;background:var(--line);margin:16px 0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14px}
+.kv dt{color:#cdbdb2}
+.kv dd{text-align:right}
+.units{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.unit{padding:12px;border-radius:12px;border:1px solid var(--line);text-align:left;transition:background .25s,border-color .25s}
+.unit:hover,.unit.hot{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)}
+.unit b{display:block;font-weight:300;font-size:22px}
+.unit span{font-size:12px}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12px}
+.st::before{content:"";width:7px;height:7px;border-radius:50%;background:#7fd38d}
+.st.booked::before{background:#f0b35b}.st.sold::before{background:#e46b5d}
+.pbtn{width:100%;margin-top:18px;padding:14px 18px;border-radius:40px;background:#fff;color:var(--ink);font-weight:400;display:flex;justify-content:space-between;align-items:center;transition:transform .25s}
+.pbtn:hover{transform:translateY(-1px)}
+.pbtn.line{background:transparent;color:#fff;border:1px solid var(--line);margin-top:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{padding:8px 13px;border-radius:30px;border:1px solid var(--line);font-size:13px}
+.chip:hover,.chip.on{background:rgba(255,255,255,.14)}
+.roomList{list-style:none;display:grid;gap:2px;margin-top:4px}
+.roomList button{width:100%;display:flex;justify-content:space-between;padding:6px 2px;font-size:13.5px!important;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px;text-align:left}
+.roomList button span:last-child{color:#d4c4b9;font-variant-numeric:tabular-nums}
+.roomList button:hover{color:#ffd9b5}
+.feat{list-style:none;display:grid;gap:8px;margin-top:6px;font-size:14px}
+.feat li{display:flex;gap:10px}.feat li::before{content:"—";color:#cbb6a6}
+.note{font-size:11.5px;color:#bfaea3;margin-top:14px;line-height:1.45}
+.legend{display:flex;gap:14px;margin-top:12px}
+.fadeSwap{animation:fs .55s var(--ease)}
+@keyframes fs{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.planLabel{position:absolute;left:28px;top:24px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#d9c9be}
+.toggle3d{position:absolute;left:28px;bottom:24px;display:flex;gap:6px;padding:4px;border-radius:30px;background:rgba(255,255,255,.1);border:1px solid var(--line);font-size:13px}
+.toggle3d button{padding:7px 14px;border-radius:30px}
+.toggle3d button.on{background:#fff;color:var(--ink)}
+@media (max-width:900px){
+  .explorer{height:auto;min-height:0;display:flex;flex-direction:column}
+  .viz{position:relative;height:60vh;min-height:400px}
+  .planStage{right:0}
+  .panel{position:relative;right:auto;top:auto;transform:none;width:auto;max-height:none;margin:0;border-radius:0;border-left:0;border-right:0;background:#221a17;backdrop-filter:none}
+  .lvl b{font-size:72px}
+  .hint{left:16px;bottom:14px}
+  .planLabel{left:16px;top:14px}
+  .toggle3d{left:16px;bottom:14px}
+}
+@media (min-width:901px){.viz{position:absolute;inset:0}}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:300px 300px;gap:14px;margin-top:40px}
+.gallery button{position:relative;overflow:hidden;border-radius:14px}
+.gallery button:first-child{grid-row:span 2}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.gallery button:hover img{transform:scale(1.05)}
+.gallery span{position:absolute;left:16px;bottom:14px;color:#fff;font-size:13px;letter-spacing:.06em;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+@media (max-width:760px){.gallery{grid-template-columns:1fr;grid-template-rows:none}.gallery button{height:240px}.gallery button:first-child{grid-row:auto}}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(12,9,8,.94);display:none;align-items:center;justify-content:center;padding:4vw}
+.lightbox.on{display:flex;animation:fs .4s}
+.lightbox img{max-height:88vh;border-radius:8px}
+.lightbox button{position:absolute;top:18px;right:22px;color:#fff;font-size:30px;font-weight:200}
+
+/* AMENITIES */
+#amenities{background:var(--paper2)}
+.am-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+.am-grid figure img{border-radius:16px;aspect-ratio:4/3.4;object-fit:cover}
+.am-icons{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 14px;margin-top:30px}
+.am-icons div{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;font-size:13px;color:var(--ink2)}
+.am-icons img{width:70px;height:70px;border-radius:50%;box-shadow:0 8px 20px rgba(90,60,40,.15);background:#fff}
+@media (max-width:900px){.am-grid{grid-template-columns:1fr;gap:30px}}
+
+/* SPECS */
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:0 60px;margin-top:40px}
+.spec{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:22px 0;border-top:1px solid rgba(60,40,30,.14)}
+.spec h4{font-weight:400;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--brown)}
+.spec p{font-size:15px;color:var(--ink2)}
+
+/* LOCATION */
+#location{background:#fff}
+.loc{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
+.loc img{border-radius:14px;border:1px solid #eee}
+.loc ul{list-style:none;margin:24px 0;display:grid;gap:12px}
+.loc li{display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding-bottom:10px;font-size:15px}
+.loc li span:last-child{color:var(--muted)}
+@media (max-width:900px){.loc{grid-template-columns:1fr;gap:30px}}
+
+/* ENQUIRY */
+#enquire{background:var(--brown);color:#f6eee7}
+.enq{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.enq .eyebrow{color:#e1cfc2}
+form{display:grid;gap:14px}
+label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#e7d7cb}
+input,select,textarea{width:100%;margin-top:6px;padding:13px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;font:inherit;font-size:15px}
+select option{color:#222}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.55)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sent{display:none;padding:16px;border-radius:12px;background:rgba(255,255,255,.12);font-size:14px}
+.sent a{display:inline-block;margin-top:10px}
+.contact p{margin:6px 0;font-size:16px}
+@media (max-width:900px){.enq{grid-template-columns:1fr;gap:36px}.row2{grid-template-columns:1fr}}
+
+footer{background:#1d1714;color:#bcaea4;font-size:12px;padding:46px 0}
+footer .top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+footer img{height:44px;filter:brightness(0) invert(.85)}
+footer .disc{line-height:1.6;opacity:.8}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a class="brand" href="#top"><img src="img/logo.webp" alt="Aurra Green"></a>
+  <ul>
+    <li><a href="#explore">Explore</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#specs">Specifications</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a class="cta" href="#enquire">Enquire</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <img src="img/sunset.webp" alt="Aurra Green tower at sunset">
+  <div class="copy wrap">
+    <div class="eyebrow" style="color:#f1dccb">3 BHK Exclusive Living · Vasna, Ahmedabad</div>
+    <h1>A home that feels<br><span class="script">grand.</span></h1>
+    <p>Twelve 3 BHK residences in a single six-storey tower, built for harmonious happiness, with a terrace for yoga, games and celebrations.</p>
+    <a class="btn" href="#explore">Explore the building <span>→</span></a>
+    <a class="btn ghost" href="#enquire" style="margin-left:8px">Book a visit</a>
+  </div>
+  <div class="scroll">SCROLL</div>
+</header>
+
+<div class="facts">
+  <div class="wrap">
+    <div class="fact"><b>01</b><span>Tower with elegant elevation</span></div>
+    <div class="fact"><b>06</b><span>Storeyed residential tower</span></div>
+    <div class="fact"><b>12</b><span>Flats in total</span></div>
+    <div class="fact"><b>3 BHK</b><span>Only residences</span></div>
+    <div class="fact"><b>10+</b><span>Lifestyle amenities</span></div>
+  </div>
+</div>
+
+<!-- EXPLORER -->
+<section id="explore">
+  <div class="wrap ex-head reveal">
+    <div class="eyebrow">Interactive explorer</div>
+    <h2 class="title">Choose your floor</h2>
+    <p>Point at a floor on the tower to see what's available, then step straight inside the home in live 3D and walk through each room.</p>
+  </div>
+  <div class="explorer" id="explorer">
+    <div class="viz">
+      <!-- Tower -->
+      <div class="view on" id="towerView">
+        <svg viewBox="0 0 2000 1576" preserveAspectRatio="xMidYMid slice" id="towerSvg" role="img" aria-label="Aurra Green tower, select a floor">
+          <image href="img/sunset.webp" width="2000" height="1576"/>
+          <g id="floorPolys"></g>
+          <g class="marker" id="marker" opacity="0">
+            <line x1="0" y1="0" x2="60" y2="0" stroke="#fff" stroke-width="3"/>
+            <text x="76" y="16" id="markerTxt">6</text>
+          </g>
+        </svg>
+        <div class="hint"><i></i><span id="hintTxt">Hover a floor, click to enter</span></div>
+      </div>
+      <!-- Typical floor / flat / room -->
+      <div class="view" id="floorView">
+        <div class="planStage" id="planStage">
+          <div class="planWrap" id="planWrap">
+            <img src="img/typical3d.webp" alt="Typical floor plan, 3D view" id="planImg">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" id="planSvg">
+              <path class="dim" id="dimA" opacity="0" d="M0 0H49.5V33H40.5V98H0Z"/>
+              <path class="dim" id="dimB" opacity="0" d="M100 0H50.5V33H59.5V98H100Z"/>
+              <path class="flatPoly" id="polyA" d="M0 0H49.5V33H40.5V98H0Z" data-side="A"/>
+              <path class="flatPoly" id="polyB" d="M100 0H50.5V33H59.5V98H100Z" data-side="B"/>
+              <text class="flatTag" id="tagA" x="20" y="96.5" text-anchor="middle"></text>
+              <text class="flatTag" id="tagB" x="80" y="96.5" text-anchor="middle"></text>
+            </svg>
+            <div id="hotspots"></div>
+          </div>
+          <div class="planLabel" id="planLabel">Typical floor plan</div>
+        </div>
+      </div>
+      <!-- Ground / Terrace -->
+      <!-- Live 3D walkthrough -->
+      <div class="view" id="liveView">
+        <div class="planStage" id="liveStage">
+          <canvas id="liveCanvas"></canvas>
+          <div class="liveLoading" id="liveLoading">Building the 3D home…</div>
+          <div class="liveCap" id="liveCap"><small id="liveCapSub"></small><b id="liveCapTitle"></b></div>
+          <div class="planLabel" id="liveLabel">Live 3D view</div>
+          <div class="liveHint" id="liveHint">Drag to look around</div>
+          <div class="toggle3d" id="liveModes"><button class="on" data-mode="walk">Walk-through</button><button data-mode="doll">Dollhouse</button></div>
+        </div>
+      </div>
+      <div class="view layerPlan" id="specialView">
+        <div class="planStage" id="specialStage">
+          <div class="planWrap" id="specialWrap"><img id="specialImg" src="img/ground.webp" alt=""></div>
+          <div class="planLabel" id="specialLabel"></div>
+          <div class="toggle3d" id="toggle3d"><button class="on" data-k="plan">Plan</button><button data-k="3d">3D view</button></div>
+        </div>
+      </div>
+    </div>
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Gallery</div>
+      <h2 class="title">Homes you will feel<br><span class="script">proud to own</span></h2>
+      <p style="max-width:560px;color:var(--ink2)">Coming home to Aurra Green is like realising a dream you've had for years: a home that matches your status, impresses your guests and gives you a sense of pride.</p>
+    </div>
+    <div class="gallery reveal">
+      <button data-src="img/aerial.webp"><img src="img/aerial.webp" alt="Aerial view" loading="lazy"><span>Aerial view</span></button>
+      <button data-src="img/day.webp"><img src="img/day.webp" alt="Elevation by day" loading="lazy"><span>Elevation by day</span></button>
+      <button data-src="img/parking3d.webp"><img src="img/parking3d.webp" alt="Ground level and parking" loading="lazy"><span>Ground level &amp; parking</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="wrap am-grid">
+    <figure class="reveal"><img src="img/amenity.webp" alt="Terrace lounge and gymnasium" loading="lazy"></figure>
+    <div class="reveal">
+      <div class="eyebrow">Lifestyle amenities</div>
+      <h2 class="title">Move smarter,<br><span class="script">live better</span></h2>
+      <div class="am-icons" id="amIcons"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section id="specs">
+  <div class="wrap">
+    <div class="reveal"><div class="eyebrow">Specification</div><h2 class="title">Built with care</h2></div>
+    <div class="specs reveal" id="specList"></div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="wrap loc">
+    <div class="reveal">
+      <div class="eyebrow">Location</div>
+      <h2 class="title">In the heart<br>of <span class="script">Vasna</span></h2>
+      <p style="color:var(--ink2)">Aurra Green, opp. Tripad Flats, Pushkarnanagar Society, Parth Hospital Lane, Vasna, Ahmedabad. On a corner plot facing a 12 m and a 9 m road, a short drive from the Sabarmati Riverfront.</p>
+      <ul>
+        <li><span>Parth Hospital</span><span>Same lane</span></li>
+        <li><span>Vasna Road · Anjali Circle</span><span>Nearby</span></li>
+        <li><span>Vasna AMTS bus terminal</span><span>Nearby</span></li>
+        <li><span>Sabarmati Riverfront</span><span>Short drive</span></li>
+      </ul>
+      <a class="btn dark" href="https://www.google.com/maps/search/?api=1&query=Parth+Hospital+Lane+Vasna+Ahmedabad" target="_blank" rel="noopener">Open in Google Maps →</a>
+    </div>
+    <figure class="reveal"><img src="img/map.webp" alt="Location map, Vasna, Ahmedabad" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- ENQUIRY -->
+<section id="enquire">
+  <div class="wrap enq">
+    <div class="reveal contact">
+      <div class="eyebrow">Book a site visit</div>
+      <h2 class="title">Let's find<br>your <span class="script">floor</span></h2>
+      <p>Call <b>+91 98254 58573</b></p>
+      <p>Email <b>arcusaurra@gmail.com</b></p>
+      <p style="margin-top:18px;opacity:.85;font-size:14px">Corporate office: 603, Shilp Zaveri, Opp. Retreat Tower, Shyamal Cross Road, Satellite, Ahmedabad 380015</p>
+    </div>
+    <form id="enqForm" class="reveal">
+      <div class="row2">
+        <label>Name<input name="name" required placeholder="Your full name"></label>
+        <label>Phone<input name="phone" required inputmode="tel" placeholder="+91"></label>
+      </div>
+      <label>Interested in<select name="unit" id="unitSelect"><option value="">Any available flat</option></select></label>
+      <label>Message<textarea name="msg" rows="3" placeholder="Preferred visit day/time"></textarea></label>
+      <button class="btn" type="submit" style="justify-self:start">Send enquiry on WhatsApp →</button>
+      <div class="sent" id="sent">Your message is ready. Tap below to send it on WhatsApp (+91 98254 58573).<br><a class="btn" id="waLink" href="#" target="_blank" rel="noopener">Open WhatsApp</a></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img src="img/logo.webp" alt="Aurra Green">
+      <div>Project by Arcus Aura Infra LLP · Architect: JDS Associates · Structure: Shreeji Structurals<br>Anant Infrastructure · Arcus Lifespaces · Vyansi Buildcon LLP</div>
+      <div>RERA reg. no.: <b>[to be added]</b></div>
+    </div>
+    <p class="disc">Disclaimer: All rights are reserved to the developer for any changes in plan &amp; specification. Torrent, AMC, stamp duty, legal charges, VAT, GST, labour cess, Narmada water connection &amp; initial maintenance contribution will be levied extra. Change in external elevation shall not be permitted. Internal changes shall be done only with prior permission and charged extra in advance. Details &amp; dimensions are indicative and for tentative representation only and should not be treated as legal documents. Possession only after full payment. Any additional charges or duties levied by Govt./local authorities will be borne by the purchaser. Sale is on the basis of carpet area as per RERA; RERA carpet area does not include exterior walls, balcony, wash area, foyer, flowerbed etc. Images are artist's impressions. Room areas shown on this site are computed from plan dimensions and are indicative. Availability shown is illustrative.</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox"><button aria-label="Close">×</button><img alt=""></div>
+
+<script>
+/* ================== DATA (edit here) ================== */
+const PROJECT = { phone:'919825458573' };
+// status: available | booked | sold   (illustrative, replace with real data)
+const STATUS = {
+  101:'sold',102:'available',201:'available',202:'sold',301:'sold',302:'available',
+  401:'booked',402:'available',501:'available',502:'sold',601:'available',602:'available'
+};
+const FLOOR_COPY = {
+  1:'First-floor homes with easy lift and stair access, close to the ground-level gardens and play area.',
+  2:'Treetop-level outlook over the landscaped plot edges, with cross-ventilated corner bedrooms.',
+  3:'Mid-level homes with open views across the 12 m road, a balance of privacy and convenience.',
+  4:'Elevated outlook over Vasna\'s rooftops, with the evening sun on the drawing-room balcony.',
+  5:'Higher-floor calm with wider sky views and well-lit living spaces through the day.',
+  6:'The top residential floor, one level below the amenity terrace with its yoga deck and games room.'
+};
+// Rooms for Flat A on the typical 3D plan (percent of image). Flat B mirrors on X.
+const ROOMS = [
+  {id:'drawing', name:'Drawing room', size:"12'0\" × 16'6\"", sqft:198, r:[21,62,20,22], p:[31,72],
+   f:['Opens onto the 12\'0" × 5\'0" balcony','A.C. point, modular switches','Premium vitrified tile flooring']},
+  {id:'balcony', name:'Balcony', size:"12'0\" × 5'0\"", sqft:60, r:[21,82,20,13], p:[31,90],
+   f:['Sit-out off the drawing room','Planter edge facing the 12 m road']},
+  {id:'living', name:'Living / Dining', size:"10'4\" × 14'0\"", sqft:145, r:[24,31,17,31], p:[33,47],
+   f:['Six-seater dining zone next to the kitchen','A.C. point, TV & telephone points','Main door from the lift foyer']},
+  {id:'kitchen', name:'Kitchen + wash', size:"9'0\" × 10'6\"", sqft:95, r:[3,34,23,21], p:[17,44],
+   f:['Granite platform with S.S. sink','Gas supply, designer dado tiles up to lintel','Separate wash area 4\'0" × 10\'6"']},
+  {id:'bed1', name:'Master bedroom', size:"12'0\" × 15'4½\"", sqft:185, r:[2,7,23,28], p:[14,22],
+   f:['Private balcony 12\'0" × 2\'7½"','Attached toilet 5\'0" × 7\'0"','A.C. point, TV & telephone points']},
+  {id:'bed2', name:'Bedroom 2', size:"11'0\" × 14'6\"", sqft:160, r:[30,3,20,28], p:[40,15],
+   f:['Attached toilet 5\'0" × 7\'0"','A.C. point, concealed copper wiring','Wardrobe wall beside the entry']},
+  {id:'toilets', name:'Attached toilets', size:"5'0\" × 7'0\" (×2)", sqft:70, r:[22,4,10,27], p:[27,18],
+   f:['CERA / Hindware sanitaryware','Jaguar CP fittings, anti-skid flooring','Designer tiles up to lintel, geyser point']},
+  {id:'bed3', name:'Bedroom 3', size:"11'0\" × 16'0\"", sqft:176, r:[1,62,21,32], p:[12,78],
+   f:['Corner room with two outside walls','A.C. point, modular switches','Common toilet 6\'0" × 5\'0" next door']},
+  {id:'toilet3', name:'Common toilet', size:"6'0\" × 5'0\"", sqft:30, r:[3,53,13,11], p:[9,59],
+   f:['Anti-skid flooring, designer wall tiles','Gas/electric geyser point']},
+];
+const STORE = {name:'Store', size:"5'6\" × 4'9\"", sqft:26};
+const ROOM_TOTAL = ROOMS.filter(r=>r.id!=='balcony').reduce((s,r)=>s+r.sqft,0)+STORE.sqft; // indicative
+const SPECIAL = {
+  0:{key:'ground',title:'Ground floor',sub:'Parking & amenities',img:'img/ground.webp',img3d:'img/parking3d.webp',
+     text:'Stilt parking with a decorative entrance, an A.C. entrance lounge and a gymnasium around the lift foyer.',
+     items:['Covered car parking','A.C. entrance lounge','Gymnasium','Children\'s play area','Senior citizen sitting','24×7 security cabin']},
+  7:{key:'terrace',title:'Terrace',sub:'Amenity terrace',img:'img/terrace.webp',img3d:'img/aerial.webp',
+     text:'An amenity terrace with an indoor games room, a yoga deck and sitting areas, plus space for celebrations.',
+     items:['Indoor games room','Yoga deck','Terrace sitting & gazebo','Celebration-friendly terrace','Pantry / wash rooms','Solar power for common use']}
+};
+const AMENITIES = ['Gymnasium','Children play area','Solar power for common use','Gazebo','A.C. entrance lounge','24×7 security','Indoor games','Senior citizen sitting area','Celebration-friendly terrace','Yoga deck on terrace','Terrace sitting','Pantry / wash rooms on terrace'];
+const SPECS = [
+  ['Super structure','Earthquake-resistant RCC frame structure.'],
+  ['Doors & windows','Decorative main door with wooden frame and brass / S.S. fittings. Flush internal doors with wooden frame. Fully anodised aluminium / powder-coated sliding windows with stone frame.'],
+  ['Flooring','Premium quality vitrified tiles in the entire apartment.'],
+  ['Kitchen','Good quality granite platform and S.S. sink. Gas supply and designer tile dado up to lintel level.'],
+  ['Electrical','Concealed copper wiring, decorative modular switches with adequate points. A.C. points in all bedrooms and living room. MCB, ELCB distribution panel. TV & telephone points in living and master bedroom.'],
+  ['Bathrooms','Jaguar or equivalent CP fittings. CERA / Hindware or equivalent sanitaryware. Designer wall tiles up to lintel with anti-skid flooring. Gas / electric geyser point in all toilets.'],
+  ['Walls','External double-coat plaster with 100% acrylic paint. Internal smooth plaster with putty finish.']
+];
+
+/* ================== TOWER GEOMETRY ================== */
+// Calibrated on img/sunset.webp (2000×1576). Corner of building at x=1000; slab lines at the corner:
+const CORNER_X=1000, LEFT_X=645, RIGHT_X=1372, HORIZON=1150;
+const SLABS=[272,398,521,644,767,890,1013,1110]; // roof .. floor6 .. floor1 .. ground bottom
+const slopeL=y=>0.41*(HORIZON-y)/800, slopeR=y=>0.000485*(1055-y);
+const lp=y=>[LEFT_X, y+(CORNER_X-LEFT_X)*slopeL(y)];
+const rp=y=>[RIGHT_X, y+(RIGHT_X-CORNER_X)*slopeR(y)];
+function floorPoly(top,bot){
+  const pts=[lp(top),[CORNER_X,top],rp(top),rp(bot),[CORNER_X,bot],lp(bot)];
+  return pts.map(p=>p.map(v=>v.toFixed(1)).join(',')).join(' ');
+}
+// level -> slab index: level 6 = SLABS[0..1], level 1 = SLABS[5..6], ground(0) = SLABS[6..7], terrace(7) = roof cap
+const LEVELS=[7,6,5,4,3,2,1,0];
+const svgNS='http://www.w3.org/2000/svg';
+const polyG=document.getElementById('floorPolys');
+const levelGeom={};
+LEVELS.forEach(L=>{
+  let top,bot;
+  if(L===7){top=SLABS[0]-58;bot=SLABS[0]+10;}
+  else if(L===0){top=SLABS[6];bot=SLABS[7];}
+  else {const i=6-L; top=SLABS[i]; bot=SLABS[i+1];}
+  const p=document.createElementNS(svgNS,'polygon');
+  p.setAttribute('points',floorPoly(top,bot));
+  p.setAttribute('class','floorPoly'+(L===0||L===7?' special':''));
+  p.dataset.level=L; polyG.appendChild(p);
+  const mid=(top+bot)/2; levelGeom[L]={el:p,mx:RIGHT_X+24,my:rp(mid)[1],cy:mid};
+});
+
+/* ================== STATE / PANEL ================== */
+const $=s=>document.querySelector(s);
+const panel=$('#panel');
+const state={view:'tower',level:6,flat:null,room:null};
+const unitNo=(L,side)=>L*100+(side==='A'?1:2);
+const stLabel=s=>({available:'Available',booked:'On hold',sold:'Sold'})[s];
+const levelName=L=>L===0?'G':L===7?'T':String(L);
+
+function availCount(L){return ['A','B'].filter(s=>STATUS[unitNo(L,s)]==='available').length}
+
+function renderTowerPanel(L){
+  if(L===0||L===7){
+    const S=SPECIAL[L];
+    panel.innerHTML=`<div class="fadeSwap">
+      <h3>${S.title}</h3><p>${S.text}</p>
+      <div class="lvl"><small>LEVEL</small><b>${levelName(L)}</b>${stepper()}</div>
+      <div class="rule"></div>
+      <p>${S.sub}</p>
+      <button class="pbtn" data-act="enter">View ${S.title.toLowerCase()} <span>→</span></button>
+      ${quickChips(L)}
+    </div>`;
+  } else {
+    const a=availCount(L);
+    panel.innerHTML=`<div class="fadeSwap">
+      <h3>Choose<br>your floor</h3>
+      <p>Point at a floor on the tower, or use the arrows. Each floor has two 3 BHK homes.</p>
+      <div class="lvl"><small>LEVEL</small><b id="lvlNum">${L}</b>${stepper()}</div>
+      <div class="kv"><dt>Homes on this floor</dt><dd>2 × 3 BHK</dd>
+      <dt>Available</dt><dd>${a===0?'None':a===1?'1 of 2':'2 of 2'}</dd></div>
+      <div class="units">${['A','B'].map(s=>{const u=unitNo(L,s),st=STATUS[u];
+        return `<button class="unit" data-flat="${s}"><b>${u}</b><span class="st ${st}">${stLabel(st)}</span></button>`}).join('')}</div>
+      <button class="pbtn" data-act="enter">Enter level ${L} <span>→</span></button>
+      ${quickChips(L)}
+    </div>`;
+  }
+}
+function stepper(){return `<div class="stepper"><button data-act="up" aria-label="Floor up">↑</button><button data-act="down" aria-label="Floor down">↓</button></div>`}
+function quickChips(L){
+  return `<div class="chips"><button class="chip ${L===7?'on':''}" data-go="7">Terrace</button><button class="chip ${L===0?'on':''}" data-go="0">Ground floor</button></div>`;
+}
+
+let hotLevel=null;
+function setHot(L,fromPanel){
+  if(state.view!=='tower')return;
+  state.level=L;
+  Object.values(levelGeom).forEach(g=>g.el.classList.remove('hot'));
+  levelGeom[L].el.classList.add('hot');
+  const m=$('#marker'); m.setAttribute('opacity','1');
+  m.style.transform=`translate(${levelGeom[L].mx}px,${levelGeom[L].my}px)`;
+  $('#markerTxt').textContent=levelName(L);
+  if(hotLevel!==L){hotLevel=L;renderTowerPanel(L);}
+}
+polyG.addEventListener('pointerover',e=>{const L=e.target.dataset&&e.target.dataset.level; if(L!==undefined)setHot(+L)});
+polyG.addEventListener('click',e=>{const L=e.target.dataset.level; if(L===undefined)return; const n=+L;
+  if(state.level===n||matchMedia('(hover:hover)').matches) enterLevel(n); else setHot(n)});
+
+/* ================== PLAN FITTING / ZOOM ================== */
+const IMG_AR=1699/1507;
+function fitWrap(stage,wrap,ar){
+  const W=stage.clientWidth,H=stage.clientHeight,pad=Math.min(70,W*.07);
+  let w=W-pad*2,h=w/ar; if(h>H-pad*2){h=H-pad*2;w=h*ar}
+  wrap.style.width=w+'px';wrap.style.height=h+'px';
+  wrap.style.left=(W-w)/2+'px';wrap.style.top=(H-h)/2+'px';
+  return {w,h};
+}
+function zoomTo(stage,wrap,rect,fill){ // rect in % [x,y,w,h]; null = reset
+  if(!rect){wrap.style.transform='translate(0,0) scale(1)';return 1}
+  const W=stage.clientWidth,H=stage.clientHeight;
+  const w=parseFloat(wrap.style.width),h=parseFloat(wrap.style.height);
+  const left=parseFloat(wrap.style.left),top=parseFloat(wrap.style.top);
+  const rw=rect[2]/100*w,rh=rect[3]/100*h;
+  const s=Math.min(W*fill/rw,H*fill/rh,2.7);
+  const cx=(rect[0]+rect[2]/2)/100*w, cy=(rect[1]+rect[3]/2)/100*h;
+  const tx=W/2-left-s*cx, ty=H/2-top-s*cy;
+  wrap.style.transform=`translate(${tx}px,${ty}px) scale(${s})`;
+  return s;
+}
+const mirror=(r,side)=>side==='A'?r:[100-r[0]-r[2],r[1],r[2],r[3]];
+const mirrorP=(p,side)=>side==='A'?p:[100-p[0],p[1]];
+
+/* ================== VIEWS ================== */
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id))}
+
+function enterLevel(L){
+  state.level=L;
+  const tv=$('#towerView'); const svg=$('#towerSvg');
+  const g=levelGeom[L]; svg.style.transformOrigin=`${(CORNER_X/2000*100).toFixed(1)}% ${(g.cy/1576*100).toFixed(1)}%`;
+  tv.classList.add('leaving');
+  setTimeout(()=>{ if(L===0||L===7) openSpecial(L); else { state.flat=state.nextFlat||pickFlat(L); state.nextFlat=null; openLive('living'); } },380);
+}
+function pickFlat(L){return STATUS[unitNo(L,'A')]==='available'?'A':STATUS[unitNo(L,'B')]==='available'?'B':'A'}
+function backToTower(){
+  state.view='tower';state.flat=null;state.room=null;hotLevel=null;
+  show('towerView'); setTimeout(()=>$('#towerView').classList.remove('leaving'),60);
+  setHot(state.level);
+}
+
+function openFloor(L){
+  state.view='floor';state.flat=null;state.room=null;
+  show('floorView');
+  const st=$('#planStage'),wr=$('#planWrap');
+  wr.style.transition='none'; fitWrap(st,wr,IMG_AR); wr.style.transform='translate(0,0) scale(1.08)';
+  wr.offsetWidth; wr.style.transition=''; requestAnimationFrame(()=>zoomTo(st,wr,null));
+  ['A','B'].forEach(s=>{const u=unitNo(L,s);
+    $('#tag'+s).textContent=`${u} · ${stLabel(STATUS[u])}`;
+    $('#poly'+s).classList.toggle('sold',STATUS[u]==='sold');
+    $('#dim'+s).setAttribute('opacity','0');
+    $('#poly'+s).style.opacity=1;$('#poly'+s).style.pointerEvents='auto';});
+  $('#tagA').style.opacity=$('#tagB').style.opacity=1;
+  $('#planLabel').textContent=`Level ${L} · Typical floor plan`;
+  clearHotspots();
+  renderFloorPanel(L);
+}
+function renderFloorPanel(L,hot){
+  panel.innerHTML=`<div class="fadeSwap">
+    <div class="crumbs"><button data-act="tower">Building</button><span>/</span><span>Level ${L}</span></div>
+    <h3>Level ${L},<br>two homes</h3>
+    <p>${FLOOR_COPY[L]}</p>
+    <div class="rule"></div>
+    <div class="units">${['A','B'].map(s=>{const u=unitNo(L,s),st=STATUS[u];
+      return `<button class="unit ${hot===s?'hot':''}" data-flat="${s}"><b>${u}</b><span class="st ${st}">${stLabel(st)}</span><br><span>3 BHK · ${s==='A'?'West':'East'} wing</span></button>`}).join('')}</div>
+    <p class="note">Select a home on the plan to walk through its rooms. Both homes on a floor are mirror images of each other.</p>
+    <div class="legend"><span class="st">Available</span><span class="st booked">On hold</span><span class="st sold">Sold</span></div>
+    <button class="pbtn line" data-act="tower">← Back to the tower</button>
+  </div>`;
+}
+
+function openFlat(side){
+  const L=state.level; state.view='flat'; state.flat=side; state.room=null;
+  const st=$('#planStage'),wr=$('#planWrap');
+  const other=side==='A'?'B':'A';
+  $('#dim'+other).setAttribute('opacity','1'); $('#dim'+side).setAttribute('opacity','0');
+  $('#poly'+other).style.pointerEvents='none'; $('#poly'+side).style.pointerEvents='none';
+  $('#tagA').style.opacity=$('#tagB').style.opacity=0;
+  zoomTo(st,wr,side==='A'?[0,0,50,98]:[50,0,50,98],.9);
+  $('#planLabel').textContent=`Level ${L} · Flat ${unitNo(L,side)}`;
+  buildHotspots(side);
+  renderFlatPanel();
+}
+function renderFlatPanel(){
+  const L=state.level,side=state.flat,u=unitNo(L,side),st=STATUS[u];
+  panel.innerHTML=`<div class="fadeSwap">
+    <div class="crumbs"><button data-act="tower">Building</button><span>/</span><button data-act="floor">Level ${L}</button><span>/</span><span>${u}</span></div>
+    <h3>Flat ${u}</h3>
+    <p>3 BHK · ${side==='A'?'West':'East'} wing · <span class="st ${st}">${stLabel(st)}</span></p>
+    <div class="rule"></div>
+    <ul class="roomList">${ROOMS.map(r=>`<li><button data-room="${r.id}"><span>${r.name}</span><span>${r.size}</span></button></li>`).join('')}
+      <li><button disabled><span>${STORE.name}</span><span>${STORE.size}</span></button></li></ul>
+    <div class="kv" style="margin-top:14px"><dt>Room area (sum of rooms)</dt><dd>≈ ${ROOM_TOTAL.toLocaleString('en-IN')} sq ft</dd>
+    <dt>Balconies</dt><dd>2</dd><dt>Price</dt><dd>On request</dd></div>
+    <button class="pbtn" data-act="live">Walk through in live 3D <span>→</span></button>
+    <button class="pbtn line" data-act="enquire" data-unit="${u}">Enquire about ${u} <span>→</span></button>
+    <button class="pbtn line" data-act="floor">← Back to level ${L}</button>
+    <p class="note">Room sizes are from the brochure plan. Area is indicative; the RERA carpet area is shared on request.</p>
+  </div>`;
+}
+
+function openRoom(id){
+  const r=ROOMS.find(x=>x.id===id); if(!r)return;
+  state.view='room';state.room=id;
+  zoomTo($('#planStage'),$('#planWrap'),mirror(r.r,state.flat),.72);
+  document.querySelectorAll('.hs').forEach(h=>h.classList.toggle('active',h.dataset.room===id));
+  const i=ROOMS.indexOf(r),prev=ROOMS[(i+ROOMS.length-1)%ROOMS.length],next=ROOMS[(i+1)%ROOMS.length];
+  const u=unitNo(state.level,state.flat);
+  panel.innerHTML=`<div class="fadeSwap">
+    <div class="crumbs"><button data-act="tower">Building</button><span>/</span><button data-act="floor">Level ${state.level}</button><span>/</span><button data-act="flat">${u}</button></div>
+    <h3>The ${r.name.toLowerCase()}</h3>
+    <div class="kv" style="margin:10px 0 4px"><dt>Size</dt><dd>${r.size}</dd><dt>Approx. area</dt><dd>${r.sqft} sq ft</dd></div>
+    <div class="rule"></div>
+    <ul class="feat">${r.f.map(x=>`<li>${x}</li>`).join('')}</ul>
+    <div style="display:flex;gap:10px">
+      <button class="pbtn line" data-room="${prev.id}" style="flex:1">← ${prev.name}</button>
+      <button class="pbtn line" data-room="${next.id}" style="flex:1">${next.name} →</button>
+    </div>
+    <button class="pbtn" data-act="flat">Back to flat ${u} <span>↩</span></button>
+  </div>`;
+}
+
+function clearHotspots(){$('#hotspots').innerHTML=''}
+function buildHotspots(side){
+  const box=$('#hotspots'); box.innerHTML='';
+  ROOMS.forEach((r,i)=>{
+    const p=mirrorP(r.p,side);
+    const b=document.createElement('button'); b.className='hs'; b.dataset.room=r.id; b.textContent=r.name;
+    b.style.left=p[0]+'%'; b.style.top=p[1]+'%';
+    box.appendChild(b);
+    setTimeout(()=>b.classList.add('show'),700+i*70);
+  });
+  scaleHotspots();
+}
+// keep hotspot labels a readable size whatever the zoom
+function scaleHotspots(){
+  const m=/scale\(([\d.]+)\)/.exec($('#planWrap').style.transform||''); const s=m?+m[1]:1;
+  document.querySelectorAll('.hs').forEach(h=>h.style.transform=`translate(-50%,-50%) scale(${1/s})`);
+}
+new MutationObserver(scaleHotspots).observe($('#planWrap'),{attributes:true,attributeFilter:['style']});
+
+/* ground / terrace */
+function openSpecial(L){
+  state.view='special';const S=SPECIAL[L];
+  show('specialView');
+  const st=$('#specialStage'),wr=$('#specialWrap'),img=$('#specialImg');
+  const set=(src)=>{img.src=src; img.onload=()=>{fitWrap(st,wr,img.naturalWidth/img.naturalHeight)}; if(img.complete)fitWrap(st,wr,img.naturalWidth/img.naturalHeight)};
+  set(S.img);
+  document.querySelectorAll('#toggle3d button').forEach(b=>{b.classList.toggle('on',b.dataset.k==='plan');
+    b.onclick=()=>{document.querySelectorAll('#toggle3d button').forEach(x=>x.classList.toggle('on',x===b)); set(b.dataset.k==='plan'?S.img:S.img3d)}});
+  $('#specialLabel').textContent=`${S.title} · ${S.sub}`;
+  panel.innerHTML=`<div class="fadeSwap">
+    <div class="crumbs"><button data-act="tower">Building</button><span>/</span><span>${S.title}</span></div>
+    <h3>${S.title}</h3><p>${S.text}</p><div class="rule"></div>
+    <ul class="feat">${S.items.map(x=>`<li>${x}</li>`).join('')}</ul>
+    <button class="pbtn line" data-act="tower">← Back to the tower</button></div>`;
+}
+
+/* ================== EVENTS ================== */
+panel.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  const act=b.dataset.act;
+  if(b.dataset.go!==undefined){ if(state.view==='tower')setHot(+b.dataset.go); enterLevel(+b.dataset.go); return;}
+  if(b.dataset.room){ if(state.view==='flat'||state.view==='room'||state.view==='live') openLive(b.dataset.room); return;}
+  if(act==='live'){openLive('living');return}
+  if(act==='plan'){const f=state.flat||'A'; stopLive(); openFloor(state.level); setTimeout(()=>openFlat(f),900); return}
+  if(act==='doll'){liveMode('doll');return}
+  if(act==='walk'){liveMode('walk');return}
+  if(b.dataset.flat){
+    if(state.view==='tower'){ state.nextFlat=b.dataset.flat; enterLevel(state.level); }
+    else if(state.view==='live'){ if(b.dataset.flat!==state.flat){state.flat=b.dataset.flat; switchLiveFlat(b.dataset.flat);} }
+    else openFlat(b.dataset.flat); return;}
+  if(act==='up'||act==='down'){ const order=[0,1,2,3,4,5,6,7]; let i=order.indexOf(state.level)+(act==='up'?1:-1); i=Math.max(0,Math.min(7,i)); setHot(order[i]); return;}
+  if(act==='enter') enterLevel(state.level);
+  if(act==='tower'){ stopLive(); backToTower();}
+  if(act==='floor'){ stopLive(); openFloor(state.level);}
+  if(act==='flat') { if(state.view==='live'){stopLive(); show('floorView');} state.view='flat'; zoomTo($('#planStage'),$('#planWrap'),state.flat==='A'?[0,0,50,98]:[50,0,50,98],.9);
+    document.querySelectorAll('.hs').forEach(h=>h.classList.remove('active')); renderFlatPanel(); }
+  if(act==='enquire'){ $('#unitSelect').value=b.dataset.unit; document.getElementById('enquire').scrollIntoView(); }
+});
+$('#planSvg').addEventListener('click',e=>{const s=e.target.dataset&&e.target.dataset.side; if(s&&state.view==='floor')openFlat(s)});
+$('#planSvg').addEventListener('pointerover',e=>{const s=e.target.dataset&&e.target.dataset.side;
+  if(s&&state.view==='floor')document.querySelectorAll('.unit').forEach(u=>u.classList.toggle('hot',u.dataset.flat===s))});
+$('#hotspots').addEventListener('click',e=>{const b=e.target.closest('.hs'); if(b)openLive(b.dataset.room)});
+$('#explorer').addEventListener('keydown',e=>{
+  if(state.view!=='tower')return;
+  if(e.key==='ArrowUp'){e.preventDefault();setHot(Math.min(7,state.level+1))}
+  if(e.key==='ArrowDown'){e.preventDefault();setHot(Math.max(0,state.level-1))}
+  if(e.key==='Enter')enterLevel(state.level);
+});
+$('#explorer').tabIndex=0;
+addEventListener('resize',()=>{
+  if(state.view==='special'){const img=$('#specialImg');fitWrap($('#specialStage'),$('#specialWrap'),img.naturalWidth/img.naturalHeight);return}
+  if(state.view==='tower')return;
+  const st=$('#planStage'),wr=$('#planWrap'); wr.style.transition='none'; fitWrap(st,wr,IMG_AR);
+  if(state.view==='floor')zoomTo(st,wr,null);
+  if(state.view==='flat')zoomTo(st,wr,state.flat==='A'?[0,0,50,98]:[50,0,50,98],.9);
+  if(state.view==='room')zoomTo(st,wr,mirror(ROOMS.find(r=>r.id===state.room).r,state.flat),.78);
+  wr.offsetWidth; wr.style.transition='';
+});
+setHot(6);
+if(!matchMedia('(hover:hover)').matches)$('#hintTxt').textContent='Tap a floor, tap again to enter';
+
+/* ================== OTHER SECTIONS ================== */
+$('#amIcons').innerHTML=AMENITIES.map((a,i)=>`<div><img src="img/icon${i}.png" alt="" loading="lazy">${a}</div>`).join('');
+$('#specList').innerHTML=SPECS.map(s=>`<div class="spec"><h4>${s[0]}</h4><p>${s[1]}</p></div>`).join('');
+const sel=$('#unitSelect');
+for(let L=1;L<=6;L++)['A','B'].forEach(s=>{const u=unitNo(L,s); if(STATUS[u]!=='sold'){const o=document.createElement('option');o.value=u;o.textContent=`Flat ${u} · Level ${L} · 3 BHK`;sel.appendChild(o)}});
+$('#enqForm').addEventListener('submit',e=>{
+  e.preventDefault(); const f=new FormData(e.target);
+  const txt=`Hello, I'm interested in Aurra Green${f.get('unit')?' (Flat '+f.get('unit')+')':''}.\nName: ${f.get('name')}\nPhone: ${f.get('phone')}${f.get('msg')?'\n'+f.get('msg'):''}`;
+  $('#waLink').href=`https://wa.me/${PROJECT.phone}?text=${encodeURIComponent(txt)}`;
+  $('#sent').style.display='block';
+});
+const nav=$('#nav'); const onScroll=()=>nav.classList.toggle('solid',scrollY>innerHeight*.6); addEventListener('scroll',onScroll,{passive:true}); onScroll();
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const lb=$('#lightbox');
+document.querySelectorAll('.gallery button').forEach(b=>b.onclick=()=>{lb.querySelector('img').src=b.dataset.src;lb.classList.add('on')});
+lb.onclick=()=>lb.classList.remove('on');
+
+/* bridge for the live 3D module */
+window.__STATE=state; window.__ROOMS=ROOMS; window.__openRoomPlan=openRoom;
+window.__renderLivePanel=function(id){
+  const r=ROOMS.find(x=>x.id===id); const i=ROOMS.indexOf(r),prev=ROOMS[(i+ROOMS.length-1)%ROOMS.length],next=ROOMS[(i+1)%ROOMS.length];
+  const u=unitNo(state.level,state.flat);
+  panel.innerHTML=`<div class="fadeSwap">
+    <div class="crumbs"><button data-act="tower">Building</button><span>/</span><button data-act="doll">Level ${state.level}</button><span>/</span><span>Flat ${u} · Live 3D</span></div>
+    <div class="units" style="margin-bottom:16px">${['A','B'].map(sd=>{const uu=unitNo(state.level,sd),st2=STATUS[uu];return `<button class="unit ${sd===state.flat?'hot':''}" data-flat="${sd}"><b>${uu}</b><span class="st ${st2}">${stLabel(st2)}</span></button>`}).join('')}</div>
+    <h3>${r.name}</h3>
+    <div class="kv" style="margin:10px 0 4px"><dt>Size</dt><dd>${r.size}</dd><dt>Approx. area</dt><dd>${r.sqft} sq ft</dd></div>
+    <div class="rule"></div>
+    <ul class="feat">${r.f.map(x=>`<li>${x}</li>`).join('')}</ul>
+    <div style="display:flex;gap:10px">
+      <button class="pbtn line" data-room="${prev.id}" style="flex:1">← ${prev.name}</button>
+      <button class="pbtn line" data-room="${next.id}" style="flex:1">${next.name} →</button>
+    </div>
+    <div class="chips">${ROOMS.map(x=>`<button class="chip ${x.id===id?'on':''}" data-room="${x.id}">${x.name}</button>`).join('')}</div>
+    <button class="pbtn" data-act="enquire" data-unit="${u}">Enquire about ${u} <span>→</span></button>
+    <button class="pbtn line" data-act="tower">← Back to the tower</button>
+    <button class="pbtn line" data-act="plan">View 2D floor plan</button>
+    <p class="note">Live view is built in 3D from the brochure floor plan. Finishes and furniture are indicative.</p>
+  </div>`;
+};
+</script>
+<script src="live3d.js"></script>
+</body>
+</html>
